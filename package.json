@@ -1,0 +1,24 @@
+{
+  "name": "sena-andres-daniel-jovanny",
+  "version": "1.0.0",
+  "description": "Este es un proyecto donde va a participar Andres, Daniel, y Jovanny",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MontoyaAndres/sena-andres-daniel-jovanny.git"
+  },
+  "keywords": [],
+  "author": "Andres, Daniel y Jovanny",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/MontoyaAndres/sena-andres-daniel-jovanny/issues"
+  },
+  "homepage": "https://github.com/MontoyaAndres/sena-andres-daniel-jovanny#readme",
+  "dependencies": {
+    "pg": "^8.22.0"
+  }
+}
