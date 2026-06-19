@@ -1,9 +1,9 @@
 ## Andres:
 
-- Integrar base de datos
-- Codigo inicial de proyecto
-- Metodo para crear productos
-- Metodo para listar productos
+- Integrar base de datos [DONE]
+- Codigo inicial de proyecto [DONE]
+- Metodo para crear productos [DONE]
+- Metodo para listar productos [DONE]
 
 ## Daniel:
 
