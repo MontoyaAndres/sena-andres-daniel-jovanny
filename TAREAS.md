@@ -1,14 +1,14 @@
 ## Andres:
 
-- Integrar base de datos [DONE]
-- Codigo inicial de proyecto [DONE]
-- Metodo para crear productos [DONE]
-- Metodo para listar productos [DONE]
+- Integrar base de datos [x]
+- Codigo inicial de proyecto [x]
+- Metodo para crear productos [x]
+- Metodo para listar productos [x]
 
 ## Daniel:
 
-- Metodo para actualizar productos
+- Metodo para actualizar productos [ ]
 
 ## Jovanny:
 
-- Metodo para eliminar productos
+- Metodo para eliminar productos [ ]
