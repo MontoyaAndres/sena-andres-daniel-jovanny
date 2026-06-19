@@ -43,5 +43,21 @@ async function listar() {
     await pool.end();
   }
 }
+async function eliminar(id) {
+  try {
+    await pool.query(
+      'DELETE FROM public."Productos" WHERE id = $1',
+      [id],
+    );
+    console.log(
+      `Se ha eliminado el producto con ID: ${id}`,
+    );
+  } catch (error) {
+    console.error(error);
+  } finally {
+    await pool.end();
+  }
+}
 
-listar();
+eliminar(1); 
+
