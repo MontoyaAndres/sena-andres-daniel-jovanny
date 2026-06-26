@@ -35,13 +35,7 @@ async function obtener(id) {
   return producto.rows[0];
 }
 
-async function actualizar(id, name, description, image, price) {
-  const resultado = await pool.query(
-    'UPDATE public."Productos" SET name = $1, description = $2, image = $3, price = $4 WHERE id = $5 RETURNING *',
-    [name, description, image, price, id],
-  );
-  return resultado.rows[0];
-}
+async function actualizar(id, name, description, image, price) {}
 
 async function eliminar(id) {
   const resultado = await pool.query(

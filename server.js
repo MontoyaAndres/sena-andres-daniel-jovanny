@@ -1,11 +1,5 @@
 const express = require("express");
-const {
-  crear,
-  listar,
-  obtener,
-  actualizar,
-  eliminar,
-} = require("./index");
+const { crear, listar, obtener, actualizar, eliminar } = require("./index");
 
 const app = express();
 app.use(express.json());
@@ -42,9 +36,7 @@ app.post("/productos", async (req, res) => {
   try {
     const { name, description, image, price } = req.body;
     if (!name || price == null) {
-      return res
-        .status(400)
-        .json({ error: "name y price son obligatorios" });
+      return res.status(400).json({ error: "name y price son obligatorios" });
     }
     const producto = await crear(name, description, image, price);
     res.status(201).json(producto);
