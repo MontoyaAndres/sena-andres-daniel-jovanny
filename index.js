@@ -13,51 +13,50 @@ const formatoColombiano = new Intl.NumberFormat("es-CO", {
 });
 
 async function crear(name, description, image, price) {
-  try {
-    await pool.query(
-      'INSERT INTO public."Productos" (name, description, image, price) VALUES ($1, $2, $3, $4)',
-      [name, description, image, price],
-    );
-    console.log(
-      `Se ha insertado nombre: ${name}, descripcion: ${description} image ${image} price ${price}`,
-    );
-  } catch (error) {
-    console.error(error);
-  } finally {
-    await pool.end();
-  }
+  const resultado = await pool.query(
+    'INSERT INTO public."Productos" (name, description, image, price) VALUES ($1, $2, $3, $4) RETURNING *',
+    [name, description, image, price],
+  );
+  return resultado.rows[0];
 }
 
 async function listar() {
-  try {
-    const productos = await pool.query('SELECT * FROM public."Productos"');
-
-    productos.rows.forEach((product) => {
-      console.log(
-        `El producto ${product.id} con nombre ${product.name} cuesta ${formatoColombiano.format(parseInt(product.price, 10))}`,
-      );
-    });
-  } catch (error) {
-    console.error(error);
-  } finally {
-    await pool.end();
-  }
+  const productos = await pool.query(
+    'SELECT * FROM public."Productos" ORDER BY id',
+  );
+  return productos.rows;
 }
+
+async function obtener(id) {
+  const producto = await pool.query(
+    'SELECT * FROM public."Productos" WHERE id = $1',
+    [id],
+  );
+  return producto.rows[0];
+}
+
+async function actualizar(id, name, description, image, price) {
+  const resultado = await pool.query(
+    'UPDATE public."Productos" SET name = $1, description = $2, image = $3, price = $4 WHERE id = $5 RETURNING *',
+    [name, description, image, price, id],
+  );
+  return resultado.rows[0];
+}
+
 async function eliminar(id) {
-  try {
-    await pool.query(
-      'DELETE FROM public."Productos" WHERE id = $1',
-      [id],
-    );
-    console.log(
-      `Se ha eliminado el producto con ID: ${id}`,
-    );
-  } catch (error) {
-    console.error(error);
-  } finally {
-    await pool.end();
-  }
+  const resultado = await pool.query(
+    'DELETE FROM public."Productos" WHERE id = $1 RETURNING *',
+    [id],
+  );
+  return resultado.rows[0];
 }
 
-eliminar(1); 
-
+module.exports = {
+  pool,
+  formatoColombiano,
+  crear,
+  listar,
+  obtener,
+  actualizar,
+  eliminar,
+};
